@@ -1,0 +1,17 @@
+.menu {
+  @apply flex items-center gap-10;
+  &__navList {
+    @apply flex items-center gap-6 uppercase;
+    a {
+      @apply tracking-widest uppercase relative;
+
+      &::after {
+        content: "";
+        @apply absolute left-0 -bottom-2 h-0.5 w-0 bg-black transition-all duration-300;
+      }
+      &:hover::after {
+        @apply w-full;
+      }
+    }
+  }
+}
