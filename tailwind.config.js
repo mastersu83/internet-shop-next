@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 const colors = require("tailwindcss/colors");
+const clamp = require("@tailwindcss/line-clamp");
 
 const constants = {
   red: "#f23c3d",
@@ -41,5 +42,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [clamp],
 };

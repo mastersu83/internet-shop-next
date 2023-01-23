@@ -1,6 +1,12 @@
 .cartItem {
+  @apply flex gap-5 items-center;
+  &__info {
+    @apply w-full;
+  }
   &__name {
+    @apply tracking-widest leading-normal line-clamp-1 font-semibold;
   }
   &__price {
+    @apply mt-1 text-sm text-beige;
   }
 }

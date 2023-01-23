@@ -1,0 +1,37 @@
+.actions {
+  @apply flex gap-x-5 justify-between mt-1;
+  .leftSide {
+    @apply flex gap-4;
+    button {
+      @apply fill-dark-green transition-all duration-300;
+    }
+    button:hover {
+      @apply fill-green;
+    }
+    button:active {
+      @apply fill-green translate-x-[1px] translate-y-[2px] shadow-none;
+    }
+
+    span {
+      @apply flex items-center justify-center font-bold text-lg min-w-[25px];
+    }
+  }
+  .removeItem {
+    @apply transition-all relative duration-300 fill-dark-green;
+  }
+
+  .removeItem:hover {
+    @apply fill-green;
+  }
+
+  .removeItem:active {
+    @apply fill-dark-green translate-x-[1px] translate-y-[2px];
+  }
+  .removeItem:after {
+    @apply absolute text-black top-[-20px] right-[-10px] w-[100px] bg-light-green-btn rounded-lg transition-all duration-300 opacity-0 invisible;
+    content: "Delete";
+  }
+  .removeItem:hover:after {
+    @apply opacity-100 visible;
+  }
+}

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ICartItem } from "../../../../types/cartItem.interface";
 
 import styles from "./CartItem.module.scss";
+import CartActions from "./CartActions/CartActions";
 
 const CartItem: FC<ICartItem> = ({ product }) => {
   return (
@@ -13,14 +14,15 @@ const CartItem: FC<ICartItem> = ({ product }) => {
         width={100}
         height={100}
       />
-      <div>
+      <div className={styles.cartItem__info}>
         <div className={styles.cartItem__name}>{product.name}</div>
         <div className={styles.cartItem__price}>
-          {new Intl.NumberFormat(undefined, {
+          {new Intl.NumberFormat("en-US", {
             currency: "USD",
             style: "currency",
           }).format(product.price)}
         </div>
+        <CartActions />
       </div>
     </div>
   );
