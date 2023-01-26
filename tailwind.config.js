@@ -5,6 +5,7 @@ const clamp = require("@tailwindcss/line-clamp");
 
 const constants = {
   red: "#f23c3d",
+  "light-red": "#fa7171",
   green: "#008d64",
   "dark-green": "#006044",
   "light-green": "#e6f2ef",

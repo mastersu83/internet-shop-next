@@ -2,10 +2,18 @@ import { FC, useState } from "react";
 
 import styles from "./Cart.module.scss";
 import CartItem from "./CartItem/CartItem";
-import { cartItems } from "../../../data/cart.data";
+import { useAppSelector } from "../../../hooks/appHooks";
+import { formatPrice } from "../../../utils/formatPrice";
 
 export const Cart: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const items = useAppSelector((state) => state.cart.items);
+
+  const total = items.reduce(
+    (acc, item) => acc + item.product.price * item.quantity,
+    0
+  );
 
   return (
     <div className={styles.cart}>
@@ -13,7 +21,7 @@ export const Cart: FC = () => {
         className={styles.cart__heading}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className={styles.cart__badge}>1</span>
+        <span className={styles.cart__badge}>{items.length}</span>
         <span className={styles.cart__text}>MY BASKET</span>
       </button>
 
@@ -33,7 +41,7 @@ export const Cart: FC = () => {
           </div>
 
           <div className={styles.items}>
-            {cartItems.map((item) => (
+            {items.map((item) => (
               <CartItem
                 key={item.id}
                 id={item.id}
@@ -42,12 +50,14 @@ export const Cart: FC = () => {
               />
             ))}
           </div>
-          <div className={styles.list__footer}>
-            <div>
-              <p>Total:</p>
-              <p>$100</p>
+          <div>
+            <div className={styles.list__footer}>
+              <div>
+                <p>Total:</p>
+                <p>{formatPrice(total)}</p>
+              </div>
+              <button>Checkout</button>
             </div>
-            <button>Checkout</button>
           </div>
         </div>
       </div>

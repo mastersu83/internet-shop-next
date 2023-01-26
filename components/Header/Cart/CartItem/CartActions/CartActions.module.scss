@@ -3,7 +3,7 @@
   .leftSide {
     @apply flex gap-4;
     button {
-      @apply fill-dark-green transition-all duration-300;
+      @apply fill-dark-green transition-all duration-75;
     }
     button:hover {
       @apply fill-green;
@@ -13,22 +13,26 @@
     }
 
     span {
-      @apply flex items-center justify-center font-bold text-lg min-w-[25px];
+      @apply flex
+      items-center
+      justify-center
+      font-bold
+      text-lg min-w-[25px];
     }
   }
   .removeItem {
-    @apply transition-all relative duration-300 fill-dark-green;
+    @apply transition-all relative duration-300 fill-red;
   }
 
   .removeItem:hover {
-    @apply fill-green;
+    @apply fill-light-red;
   }
 
   .removeItem:active {
-    @apply fill-dark-green translate-x-[1px] translate-y-[2px];
+    @apply fill-red translate-x-[1px] translate-y-[2px];
   }
   .removeItem:after {
-    @apply absolute text-black top-[-20px] right-[-10px] w-[100px] bg-light-green-btn rounded-lg transition-all duration-300 opacity-0 invisible;
+    @apply absolute text-white top-[-20px] right-[-10px] w-[100px] bg-light-red rounded-lg transition-all duration-300 opacity-0 invisible;
     content: "Delete";
   }
   .removeItem:hover:after {

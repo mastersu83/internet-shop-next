@@ -4,8 +4,9 @@ import { ICartItem } from "../../../../types/cartItem.interface";
 
 import styles from "./CartItem.module.scss";
 import CartActions from "./CartActions/CartActions";
+import { formatPrice } from "../../../../utils/formatPrice";
 
-const CartItem: FC<ICartItem> = ({ product }) => {
+const CartItem: FC<ICartItem> = ({ product, quantity, id }) => {
   return (
     <div className={styles.cartItem}>
       <Image
@@ -17,12 +18,9 @@ const CartItem: FC<ICartItem> = ({ product }) => {
       <div className={styles.cartItem__info}>
         <div className={styles.cartItem__name}>{product.name}</div>
         <div className={styles.cartItem__price}>
-          {new Intl.NumberFormat("en-US", {
-            currency: "USD",
-            style: "currency",
-          }).format(product.price)}
+          {formatPrice(product.price)}
         </div>
-        <CartActions />
+        <CartActions id={id} count={quantity} />
       </div>
     </div>
   );
