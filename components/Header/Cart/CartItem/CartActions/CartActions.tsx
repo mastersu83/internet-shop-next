@@ -1,13 +1,23 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import RemoveIcon from "../../../../Icons/RemoveIcon";
 import MinusIcon from "../../../../Icons/MinusIcon";
 
 import styles from "../CartActions/CartActions.module.scss";
 import PlusIcon from "../../../../Icons/PlusIcon";
 import { useAppActions } from "../../../../../hooks/appHooks";
+import ConfirmIcon from "../../../../Icons/ConfirmIcon";
+import CloseIcon from "../../../../Icons/CloseIcon";
 
-const CartActions: FC<{ id: number; count: number }> = ({ id, count }) => {
+const CartActions: FC<{
+  id: number;
+  count: number;
+}> = ({ id, count }) => {
   const { removeCart, changeQuantity } = useAppActions();
+  const [removeConfirm, setRemoveConfirm] = useState(false);
+
+  const handleRemove = () => {
+    setRemoveConfirm(!removeConfirm);
+  };
 
   return (
     <div className={styles.actions}>
@@ -20,9 +30,23 @@ const CartActions: FC<{ id: number; count: number }> = ({ id, count }) => {
           <MinusIcon />
         </button>
       </div>
-      <button className={styles.removeItem} onClick={() => removeCart({ id })}>
-        <RemoveIcon />
-      </button>
+
+      <div className={styles.removeConfirm}>
+        {removeConfirm ? (
+          <div className={styles.removePopup}>
+            <button onClick={() => removeCart({ id })}>
+              <ConfirmIcon />
+            </button>
+            <button onClick={handleRemove}>
+              <CloseIcon />
+            </button>
+          </div>
+        ) : (
+          <button className={styles.removeItem} onClick={handleRemove}>
+            <RemoveIcon />
+          </button>
+        )}
+      </div>
     </div>
   );
 };

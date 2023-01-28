@@ -14,20 +14,17 @@
       .close {
         @apply flex justify-between py-2 px-6 border-b-2 border-beige border-opacity-40;
         .closeBtn {
-          @apply transition-all duration-500 w-[25px] h-[25px] cursor-pointer flex justify-between;
-          .block1 {
-            @apply h-[25px] w-[2px] ml-[12px] bg-black rotate-45;
-          }
-          .block2 {
-            @apply h-[25px] w-[2px] bg-black rotate-90;
-          }
+          @apply transition-all duration-500 cursor-pointer flex justify-between;
         }
         .closeBtn:hover {
           transform: rotate(90deg);
         }
       }
       .items {
-        @apply flex-1 flex flex-col py-2;
+        @apply flex-1 flex flex-col py-2 items-center;
+        p {
+          @apply font-semibold text-2xl;
+        }
       }
 
       &__footer {

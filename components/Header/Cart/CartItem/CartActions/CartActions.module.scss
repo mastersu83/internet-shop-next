@@ -1,5 +1,5 @@
 .actions {
-  @apply flex gap-x-5 justify-between mt-1;
+  @apply flex gap-x-5 justify-between items-center mt-1;
   .leftSide {
     @apply flex gap-4;
     button {
@@ -21,7 +21,7 @@
     }
   }
   .removeItem {
-    @apply transition-all relative duration-300 fill-red;
+    @apply relative transition-all duration-300 fill-red;
   }
 
   .removeItem:hover {
@@ -32,10 +32,19 @@
     @apply fill-red translate-x-[1px] translate-y-[2px];
   }
   .removeItem:after {
-    @apply absolute text-white top-[-20px] right-[-10px] w-[100px] bg-light-red rounded-lg transition-all duration-300 opacity-0 invisible;
+    @apply absolute text-white top-[-25px] right-[-10px] w-[100px] bg-light-red rounded-lg transition-all duration-300 opacity-0 invisible;
     content: "Delete";
   }
   .removeItem:hover:after {
     @apply opacity-100 visible;
+  }
+}
+
+.removeConfirm {
+  @apply h-[35px] transition-all duration-300;
+  .removePopup {
+    @apply flex gap-x-5 transition-all duration-300;
+    button {
+    }
   }
 }

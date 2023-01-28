@@ -4,6 +4,7 @@ import styles from "./Cart.module.scss";
 import CartItem from "./CartItem/CartItem";
 import { useAppSelector } from "../../../hooks/appHooks";
 import { formatPrice } from "../../../utils/formatPrice";
+import CloseIcon from "../../Icons/CloseIcon";
 
 export const Cart: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,21 +35,23 @@ export const Cart: FC = () => {
           <div className={styles.close}>
             <span className={styles.cart__text}>MY BASKET</span>
             <div className={styles.closeBtn} onClick={() => setIsOpen(!isOpen)}>
-              <div className={styles.block1}>
-                <div className={styles.block2}></div>
-              </div>
+              <CloseIcon />
             </div>
           </div>
 
           <div className={styles.items}>
-            {items.map((item) => (
-              <CartItem
-                key={item.id}
-                id={item.id}
-                product={item.product}
-                quantity={item.quantity}
-              />
-            ))}
+            {items.length ? (
+              items.map((item) => (
+                <CartItem
+                  key={item.id}
+                  id={item.id}
+                  product={item.product}
+                  quantity={item.quantity}
+                />
+              ))
+            ) : (
+              <p>Basket is empty!</p>
+            )}
           </div>
           <div>
             <div className={styles.list__footer}>

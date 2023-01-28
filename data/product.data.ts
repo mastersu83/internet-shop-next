@@ -5,7 +5,7 @@ export const products: IProduct[] = [
     id: 1,
     name: "Peppermint WhitePeppermint WhitePeppermint WhitePeppermint WhitePeppermint WhitePeppermint WhitePeppermint White",
     description: "Chocolate Mocha Frappuccino® Blended Beverage 470 calories",
-    price: 9.27,
+    price: 9,
     images: [
       "/images/products/peppermint.png",
       "/images/products/sugar-cookie.png",
